@@ -1,0 +1,11 @@
+<div class="card shadow">
+    <img src="{{elProducto.image}}" alt="imagen del articulo" class="img-fluid"/>
+    <ul class="list-group m-1">
+        <li class="list-group-item"><strong>Id:</strong> {{elProducto._id}}</li>
+        <li class="list-group-item"><strong>{{elProducto.category.toLocaleUpperCase()}}</strong></li>
+        <li class="list-group-item">{{elProducto.name}}</li>
+        <li class="list-group-item"><strong>{{elProducto.price}}</strong></li>
+        <li class="list-group-item">{{elProducto.description}}</li>
+    </ul>
+    <button (click)="eliminar()"  class="btn btn-dark btn-sm">Eliminar</button>
+</div>

@@ -1,0 +1,55 @@
+<section class="card ">
+    <form [formGroup]="modelForm" (ngSubmit)="getDataForm()" class="card p-3 shadow " >
+        <h3>Alta producto</h3>
+        <div class="d-flex gap-2 ">
+        <select name="category" id="category" class="form-select" formControlName = "category">
+            <option value="">Seleccione una categoria</option>
+            @for(categoria of categorias; track categoria){
+                <option [value]="categoria">{{categoria}}</option>
+            }
+            @if(checkControl('category','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </select>
+        <select name="active" id="active" class="form-select" formControlName = "active">
+            <option value="">Seleccione un estado</option>
+            @for(estado of activo; track estado){
+                <option [value]="estado">{{estado}}</option>
+            }
+            @if(checkControl('active','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </select>
+        </div> 
+        <div>
+        <label for="name" class="form-label">Nombre: </label>
+        <input type="text" name="" id="name" class="form-control mb-1"
+        placeholder="Introduce el nombre" formControlName="name">
+        @if(checkControl('name','required')){
+            <p class="error">Campo requerido</p>
+        }
+        <label for="description" class="form-label">Descripcion: </label>
+        <input type="text" name="" id="description" class="form-control mb-1"
+        placeholder="Introduce una descripcion" formControlName="description">
+        @if(checkControl('description','required')){
+            <p class="error">Campo requerido</p>
+        }
+        <label for="price" class="form-label">Precio: </label>
+        <input type="number" name="" id="price" class="form-control mb-1"
+        placeholder="Introduce un precio" formControlName="price">
+        @if(checkControl('price','required')){
+            <p class="error">Campo requerido</p>
+        }
+        <label for="image" class="form-label">URL imgen: </label>
+        <input type="text" name="" id="image" class="form-control mb-1"
+        placeholder="Introduce la URL de la imagen" formControlName="image">
+        @if(checkControl('image','pattern')){
+            <p class="error">Introduzca URL válida</p>
+        }
+        @if(checkControl('image','required')){
+            <p class="error">Campo requerido</p>
+        }
+    </div>
+    <input type="submit" value="Enviar" class="btn btn-dark btn-sm"[disabled]="!modelForm.valid">
+    </form>
+</section>
