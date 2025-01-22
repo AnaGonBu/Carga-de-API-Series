@@ -19,13 +19,22 @@ export class ProductServiceService {
     this.categorias= [];
     this.activo=[];
     this.nombres =[];
-// fetch( https://jsonblob.com/api/1329500703332425728)
+// fetch( "https://jsonblob.com/api/1329500703332425728")
 //  .then(response => response.json())
 //  .then(arrProductos => {
 //    console.log('Productos obtenidos:', arrProductos);
 //  })
 //  .catch(error => console.error('Error al obtener los productos:', error));
 }
+// constructor() {
+//   //Obtenemos mediante el fecth los datos de la API
+//   fetch("https://jsonblob.com/api/1329500703332425728")
+//   .then(response => response.json())
+//   .then(productos => {
+//       productos.forEach((prod: any) => {
+//         let producto = prod as ISerie;
+//         this.arrProductos.push(producto);
+//       });
 
 
   getAllProducts():IProduct[]{

@@ -42,9 +42,7 @@ export class ProductListComponent implements OnInit {
   filtrarProductos(filtros: any): void {
     this.productos = this.productService.filtrarProductos(filtros)
   }
-  trackByFn(index: number, item: IProduct): any {
-    return item._id; // o cualquier propiedad única del producto
-  }
+  
   ordenarProductos(orden: string): void {
     
     this.productos=this.productService.ordenarProductos(this.productos, orden);
