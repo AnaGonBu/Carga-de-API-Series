@@ -1,27 +1,24 @@
-# CargaAPISeries
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Actividad 2: Carga de API-Series  
+## Objetivos de la actividad
+Con esta actividad vas a conseguir desarrollar en Angular un sistema para consumir  
+elementos de una API de manera tradicional. Crearemos un sistema que nos permite  
+publicar a través de un pequeño formulario una serie nueva.  
+Se debe realizar un proyecto en Angular 18 o posterior, para la conexión mediante  
+fetch a la API usar la siguiente URL: https://jsonblob.com/api/1313446273633935360  
+El sistema generado será una SPA, donde todos los componentes estén dentro de la ruta principal.  
+Lista de tareas  
+1. Generar el proyecto en Angular 18 o posterior.  
+2. Instalar y configurar Bootstrap.  
+3. Modificación del App-Component para que tenga una cabecera y un footer.  
+4. Desarrollar un elemento ProductService para comunicar e hidratar los datos  
+de los componentes y la API-REST.  
+5. Desarrollar un componente ProductsList en el que se listen todos los productos de la API.  
+6. Desarrollar un componente ProductCard en el que se muestre la información    
+del producto, desde este componente se debe de poder eliminar el producto de la lista.
+7. Desarrollar un componente ProductForm que contenga un formulario  
+ReactiveForm con validadores para dar de alta un nuevo producto, este  
+producto debe verse en la lista cuando se da de alta.  
+8. Desarrollar un componente ProductFilter que contenga un formulario de tipo  
+FormsTemplate en el que se puedan realizar filtros de los productos de la lista (por nombre, categoría, precio y activo).
+9. Implementar toda la funcionalidad necesaria en el Service.  
+Se debe de usar Bootstrap para la maquetación.
