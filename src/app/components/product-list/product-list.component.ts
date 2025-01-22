@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   productos: IProduct[];
 
 
+
   //Inyectamos servicio
   productService = inject(ProductServiceService);
 
@@ -29,7 +30,9 @@ export class ProductListComponent implements OnInit {
 
   //con llamada a Api, si puede ir en constructor, asincrono, con promesa, sino, aqui en OnInit
   ngOnInit(){
+    
     this.productos=this.productService.getAllProducts();
+
 
   }
   eliminarProducto(producto: IProduct): void {
@@ -41,6 +44,10 @@ export class ProductListComponent implements OnInit {
   }
   trackByFn(index: number, item: IProduct): any {
     return item._id; // o cualquier propiedad única del producto
+  }
+  ordenarProductos(orden: string): void {
+    
+    this.productos=this.productService.ordenarProductos(this.productos, orden);
   }
 
 }

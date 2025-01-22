@@ -16,14 +16,17 @@ export class ProductFilterComponent implements OnInit{
   activo : boolean [];
   productService= inject(ProductServiceService);
   nombres: string[];
- // filter: IProduct | undefined;
-  @Output() filtrarProducto = new EventEmitter<any>();
 
+
+  @Output() filtrarProducto = new EventEmitter<any>();
+  @Output() ordenarPrecio = new EventEmitter<any>();
   constructor(){
     this.productos=[];
     this.categorias=[];
     this.activo=[];
     this.nombres=[];
+
+  
 
   }
 
@@ -38,6 +41,12 @@ export class ProductFilterComponent implements OnInit{
   getDataFilter(filterform: NgForm): void {
     this.filtrarProducto.emit(filterform.value); // Emite los filtros al componente padre
     filterform.reset();
+  }
+  getOrdenarPrecio(orderform :NgForm): void {
+    const orden = orderform.value.price; // Obtén el valor del select
+    this.ordenarPrecio.emit(orden);// Emite el valor al padre
+    console.log("Orden emitida desde el hijo:", orden);
+    orderform.reset();
   }
 
 // getDataFilter(filterform: NgForm) {

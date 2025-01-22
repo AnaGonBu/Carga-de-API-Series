@@ -27,6 +27,7 @@ export class ProductServiceService {
 //  .catch(error => console.error('Error al obtener los productos:', error));
 }
 
+
   getAllProducts():IProduct[]{
 
     return this.arrProductos;
@@ -86,6 +87,17 @@ export class ProductServiceService {
 filtrarProductos(filtros: any): IProduct[] {
   throw new Error('Method not implemented.');
 }
+ordenarProductos(productos: IProduct[], orden: string): IProduct[] {
+
+  return productos.sort((a, b) => {
+    if (a.price === b.price) {
+      return 0; // Si los precios son iguales, no cambiar el orden
+    }
+    return orden === 'asc' ? a.price - b.price : b.price - a.price;
+  });
+}
+
+
 
 
 }

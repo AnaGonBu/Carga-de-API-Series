@@ -24,3 +24,14 @@
     </div>
 
 </form>
+<br>
+<form #orderform="ngForm" (ngSubmit)="getOrdenarPrecio(orderform)">
+<div class="d-flex gap-2">
+    <select name="price" id="price" class="form-select" ngModel >
+        <option value="" selected>Ordenar por precio</option>
+        <option value="asc">Precio menor</option>
+        <option value="desc">Precio mayor</option>
+    </select>
+    <input type="submit" value="Ordenar" class="btn btn-dark btn-sm">
+</div>
+</form>
