@@ -6,6 +6,7 @@ import { IProduct } from '../interfaces/iproduct';
   providedIn: 'root'
 })
 export class ProductServiceService {
+
   
   private arrProductos : IProduct[];
   private categorias : string [];
@@ -31,7 +32,7 @@ export class ProductServiceService {
     return this.arrProductos;
   }
 
-  getByName(name: string):IProduct[] | undefined{
+  getByName(name: string= ''):IProduct[] | undefined{
 
     return this.arrProductos.filter(producto => producto.name.toLowerCase()== name);
   }
@@ -44,28 +45,15 @@ export class ProductServiceService {
 
     return this.arrProductos.filter(producto => producto.price === precio);
   }
-  getByCategory(categoria:string):IProduct [] | undefined[]{
+  getByCategory(categoria:string =''):IProduct [] | undefined[]{
     
   return  this.arrProductos.filter((producto) => producto.category.toLowerCase().includes(categoria));
       
   }
-  getByActive(estado:boolean):IProduct []| undefined{
+  getByActive(estado:boolean):IProduct [] | undefined []{
 
     return this.arrProductos.filter(producto => producto.active == estado);
   }
-  filtrarProductos(filtros:any):IProduct[]{
-    return this.arrProductos.filter((producto) => {
-      const cumpleNombre =
-        !filtros.name || producto.name.toLowerCase().includes(filtros.name.toLowerCase());
-      const cumpleCategoria =
-        !filtros.category || producto.category.toLowerCase() === filtros.category.toLowerCase();
-      const cumpleEstado =
-        !filtros.active || producto.active.toString() === filtros.active.toString();
-
-      return cumpleNombre && cumpleCategoria && cumpleEstado;
-    });
-  }
-
 
   //Selecciono valores unicos de categoria
   getCategoria(): string[] {
@@ -95,5 +83,9 @@ export class ProductServiceService {
   });
   return this.nombres;
 }
-  
+filtrarProductos(filtros: any): IProduct[] {
+  throw new Error('Method not implemented.');
+}
+
+
 }
