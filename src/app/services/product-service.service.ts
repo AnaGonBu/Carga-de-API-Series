@@ -15,10 +15,12 @@ export class ProductServiceService {
 
 
   constructor() {
+    
     this.arrProductos=PRODUCTOS;
     this.categorias= [];
     this.activo=[];
     this.nombres =[];
+    console.log('Datos originales:', this.arrProductos);
 // fetch( "https://jsonblob.com/api/1329500703332425728")
 //  .then(response => response.json())
 //  .then(arrProductos => {
@@ -94,8 +96,28 @@ export class ProductServiceService {
   return this.nombres;
 }
 filtrarProductos(filtros: any): IProduct[] {
-  throw new Error('Method not implemented.');
+  console.log('Filtros en el servicio:', filtros);
+  console.log(Object.keys(filtros).length)
+  if (Object.keys(filtros).length === 1) {
+    if (filtros.name) {
+      return this.arrProductos.filter(
+        (producto) => producto.name.toLowerCase() === filtros.name.toLowerCase()
+      );
+      console.log(this.arrProductos.filter((producto) => producto.name.toLowerCase() === filtros.nombre.toLowerCase()))
+    } else if (filtros.active !== undefined) {
+      return this.arrProductos.filter(
+        (producto) => producto.active === filtros.active
+      );
+    } else if (filtros.category) {
+      return this.arrProductos.filter(
+        (producto) => producto.category.toLowerCase().includes(filtros.category.toLowerCase())
+      );
+    }
+  }
+  // Si no hay filtros o hay más de uno, devuelve todos los productos
+  return this.arrProductos;
 }
+    
 ordenarProductos(productos: IProduct[], orden: string): IProduct[] {
 
   return productos.sort((a, b) => {

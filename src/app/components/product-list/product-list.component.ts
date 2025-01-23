@@ -40,7 +40,9 @@ export class ProductListComponent implements OnInit {
 
   }
   filtrarProductos(filtros: any): void {
+    console.log('Filtros recibidos', filtros)
     this.productos = this.productService.filtrarProductos(filtros)
+    console.log('Productos filtrados', this.productos)
   }
   
   ordenarProductos(orden: string): void {

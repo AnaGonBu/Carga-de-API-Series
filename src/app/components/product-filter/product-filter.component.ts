@@ -39,7 +39,10 @@ export class ProductFilterComponent implements OnInit{
   }
 
   getDataFilter(filterform: NgForm): void {
-    this.filtrarProducto.emit(filterform.value); // Emite los filtros al componente padre
+    
+    let filtros= filterform.value
+    console.log('Filtros enviados:', filtros)
+    this.filtrarProducto.emit(filtros); // Emite los filtros al componente padre
     filterform.reset();
   }
   getOrdenarPrecio(orderform :NgForm): void {
@@ -49,31 +52,7 @@ export class ProductFilterComponent implements OnInit{
     orderform.reset();
   }
 
-// getDataFilter(filterform: NgForm) {
-//   console.log(filterform.value)
-//  let filter = filterform.value as IProduct
-//   if(filter.name==''&& filter.category==''){
-//       this.productService.getByDescription(filter.description)
-//   }else if(filter.name==''&& filter.description==''){
-//       this.productService.getByCategory(filter.category)
-//   }else if(filter.category==''&& filter.description==''){
-//       this.productService.getByName(filter.name)
-//   }else if(filter.name !==''){
-//         this.productService.getByName(filter.name)
-//       }if(filter.category !==''){
-//         this.productService.getByCategory
-//       }if(filter.description !==''){
-//         this.productService.getByDescription
-//       }
-//       console.log(this.productService)
-//     return this.productService
-//     }
-    
-  
- /* console.log(this.productService.getByCategory(filter.category))
-  console.log(this.productService.getByName(filter.name))
-  console.log(this.productService.getByDescription(filter.description))
-  filterform.resetForm();
-}*/
+
+
 
 }
