@@ -21,51 +21,21 @@ export class ProductServiceService {
     this.activo=[];
     this.nombres =[];
     console.log('Datos originales:', this.arrProductos);
-// fetch( "https://jsonblob.com/api/1329500703332425728")
-//  .then(response => response.json())
-//  .then(arrProductos => {
-//    console.log('Productos obtenidos:', arrProductos);
-//  })
-//  .catch(error => console.error('Error al obtener los productos:', error));
-}
+
 // constructor() {
-//   //Obtenemos mediante el fecth los datos de la API
-//   fetch("https://jsonblob.com/api/1329500703332425728")
-//   .then(response => response.json())
-//   .then(productos => {
-//       productos.forEach((prod: any) => {
-//         let producto = prod as ISerie;
-//         this.arrProductos.push(producto);
+//   this.arrProductos = [];
+//   fetch(""https://jsonblob.com/api/1329500703332425728"")
+//     .then(response => response.json())
+//     .then(productos => {
+//         productos.forEach((element: any) => {
+//         this.arrProductos.push(element as IProduct);
 //       });
+//     });
 
+//   console.log(this.arrProductos)
+// }
 
-  getAllProducts():IProduct[]{
-
-    return this.arrProductos;
-  }
-
-  getByName(name: string= ''):IProduct[] | undefined{
-
-    return this.arrProductos.filter(producto => producto.name.toLowerCase()== name);
-  }
-
-  getByDescription(desc : string):IProduct[] |undefined{
-
-    return this.arrProductos.filter(producto => producto.description.toLowerCase().includes(desc.toLowerCase()));
-  }
-  getByPrice(precio: number):IProduct []{
-
-    return this.arrProductos.filter(producto => producto.price === precio);
-  }
-  getByCategory(categoria:string =''):IProduct [] | undefined[]{
-    
-  return  this.arrProductos.filter((producto) => producto.category.toLowerCase().includes(categoria));
-      
-  }
-  getByActive(estado:boolean):IProduct [] | undefined []{
-
-    return this.arrProductos.filter(producto => producto.active == estado);
-  }
+}
 
   //Selecciono valores unicos de categoria
   getCategoria(): string[] {
@@ -95,27 +65,32 @@ export class ProductServiceService {
   });
   return this.nombres;
 }
-filtrarProductos(filtros: any): IProduct[] {
-  console.log('Filtros en el servicio:', filtros);
-  console.log(Object.keys(filtros).length)
-  if (Object.keys(filtros).length === 1) {
-    if (filtros.name) {
-      return this.arrProductos.filter(
-        (producto) => producto.name.toLowerCase() === filtros.name.toLowerCase()
-      );
-      console.log(this.arrProductos.filter((producto) => producto.name.toLowerCase() === filtros.nombre.toLowerCase()))
-    } else if (filtros.active !== undefined) {
-      return this.arrProductos.filter(
-        (producto) => producto.active === filtros.active
-      );
-    } else if (filtros.category) {
-      return this.arrProductos.filter(
-        (producto) => producto.category.toLowerCase().includes(filtros.category.toLowerCase())
-      );
-    }
+
+filtrarProductos(filter: any): IProduct[] {
+  let productosFiltrados = this.arrProductos;
+
+  // Filtro por nombre
+  if (filter.name) {
+    productosFiltrados = productosFiltrados.filter(
+      (prod) => prod.name.toLowerCase() === filter.name.toLowerCase()
+    );
   }
-  // Si no hay filtros o hay más de uno, devuelve todos los productos
-  return this.arrProductos;
+
+  // Filtro por categoría
+  if (filter.category) {
+    productosFiltrados = productosFiltrados.filter(
+      (prod) => prod.category.toLowerCase() === filter.category.toLowerCase()
+    );
+  }
+
+  // Filtro por estado, castea a booleano
+  if (filter.active !== undefined && filter.active !== '') {
+    productosFiltrados = productosFiltrados.filter(
+      (prod) => prod.active === JSON.parse(filter.active)
+    );
+  }
+
+  return productosFiltrados;
 }
     
 ordenarProductos(productos: IProduct[], orden: string): IProduct[] {
@@ -128,7 +103,32 @@ ordenarProductos(productos: IProduct[], orden: string): IProduct[] {
   });
 }
 
+getAllProducts():IProduct[]{
 
+  return this.arrProductos;
+}
 
+getByName(name: string= ''):IProduct[] | undefined{
+
+  return this.arrProductos.filter(producto => producto.name.toLowerCase()== name);
+}
+
+getByDescription(desc : string):IProduct[] |undefined{
+
+  return this.arrProductos.filter(producto => producto.description.toLowerCase().includes(desc.toLowerCase()));
+}
+getByPrice(precio: number):IProduct []{
+
+  return this.arrProductos.filter(producto => producto.price === precio);
+}
+getByCategory(categoria:string =''):IProduct [] | undefined[]{
+  
+return  this.arrProductos.filter((producto) => producto.category.toLowerCase().includes(categoria));
+    
+}
+getByActive(estado:boolean):IProduct [] | undefined []{
+
+  return this.arrProductos.filter(producto => producto.active == estado);
+}
 
 }

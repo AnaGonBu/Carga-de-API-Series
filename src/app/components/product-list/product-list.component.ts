@@ -27,7 +27,6 @@ export class ProductListComponent implements OnInit {
     this.productos=[];
 
   }
-
   //con llamada a Api, si puede ir en constructor, asincrono, con promesa, sino, aqui en OnInit
   ngOnInit(){
     

@@ -11,6 +11,10 @@ import { ProductServiceService } from '../../services/product-service.service';
   styleUrls: ['./product-filter.component.css']
 })
 export class ProductFilterComponent implements OnInit{
+
+  @Output() filtrarProductos = new EventEmitter<any>();
+  @Output() ordenarPrecio = new EventEmitter<any>();
+
   categorias: string[];
   productos: IProduct[];
   activo : boolean [];
@@ -18,8 +22,7 @@ export class ProductFilterComponent implements OnInit{
   nombres: string[];
 
 
-  @Output() filtrarProducto = new EventEmitter<any>();
-  @Output() ordenarPrecio = new EventEmitter<any>();
+
   constructor(){
     this.productos=[];
     this.categorias=[];
@@ -42,7 +45,7 @@ export class ProductFilterComponent implements OnInit{
     
     let filtros= filterform.value
     console.log('Filtros enviados:', filtros)
-    this.filtrarProducto.emit(filtros); // Emite los filtros al componente padre
+    this.filtrarProductos.emit(filtros); // Emite los filtros al componente padre
     filterform.reset();
   }
   getOrdenarPrecio(orderform :NgForm): void {
