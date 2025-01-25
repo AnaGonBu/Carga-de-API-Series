@@ -66,13 +66,13 @@ export class ProductServiceService {
   return this.nombres;
 }
 
-filtrarProductos(filter: any): IProduct[] {
+filtrarProd(filter: any): IProduct[] {
   let productosFiltrados = this.arrProductos;
 
   // Filtro por nombre
   if (filter.name) {
     productosFiltrados = productosFiltrados.filter(
-      (prod) => prod.name.toLowerCase() === filter.name.toLowerCase()
+      (prod) => prod.name.toLowerCase().includes(filter.name.toLowerCase()) 
     );
   }
 

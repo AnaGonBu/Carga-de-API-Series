@@ -38,9 +38,9 @@ export class ProductListComponent implements OnInit {
     this.productos = this.productos.filter((p) => p._id !== producto._id);
 
   }
-  filtrarProductos(filtros: any): void {
+  filtrarProd(filtros: any): void {
     console.log('Filtros recibidos', filtros)
-    this.productos = this.productService.filtrarProductos(filtros)
+    this.productos = this.productService.filtrarProd(filtros)
     console.log('Productos filtrados', this.productos)
   }
   
